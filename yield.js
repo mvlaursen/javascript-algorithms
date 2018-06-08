@@ -1,6 +1,12 @@
-function* Yieldinator() {
-    yield "Burp!";
+function* MyStupidGenerator() {
+    var response;
+    const responses = ["burp!", "fart!", "boom!", "yay!", "boo!", "done"];
+    
+    while ((response = responses[Math.floor(responses.length * Math.random())]) !== "done")
+        yield response;
 }
 
-const iter = Yieldinator();
-console.log(iter.next().value);
+const iter = MyStupidGenerator();
+while (!((response = iter.next()).done)) {
+    console.log(response.value);
+}
